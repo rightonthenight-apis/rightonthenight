@@ -1,0 +1,32 @@
+version: '2'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: rightonthenight.online/app
+    volumes:
+     - .:/var/www/html
+    networks:
+     - esnet
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    image: rightonthenight.online/node
+    volumes:
+     - .:/var/www/html
+    networks:
+     - esnet
+  mysql:
+    image: mysql:5.7
+    volumes:
+     - mysqldata:/var/lib/mysql
+    networks:
+     - esnet
+  redis:
+    image: redis:alpine
+    volumes:
+     - redisdata:/data
+    networks:
+     - esnet

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker build -f app/Dockerfile -t rightonthenight.online/app:latest ./app
+docker build -f node/Dockerfile -t rightonthenight.online/node:latest ./node
